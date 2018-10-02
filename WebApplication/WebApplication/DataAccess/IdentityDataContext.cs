@@ -12,6 +12,7 @@ namespace WebApplication.DataAccess
     {
         public IdentityDataContext(DbContextOptions<IdentityDataContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
     }
 }
