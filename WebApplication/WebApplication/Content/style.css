@@ -1,0 +1,130 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #eaeaea;
+}
+
+.Chat {
+    max-width: 500px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 20px;
+}
+
+.Chat-messages {
+    height: 440px;
+    padding: 30px;
+}
+.Chat-messages > * + * {
+    margin-top: 40px;
+}
+
+.Chat-message--user {
+    text-align: right;
+}
+.Chat-message--user .Chat-bubble {
+    background: #A5668B;
+    color: white;
+}
+.Chat-message--user + .Chat-message--user {
+    margin-top: 15px;
+}
+.Chat-message--bot + .Chat-message--bot {
+    margin-top: 15px;
+}
+.Chat-message--dots {
+    opacity: 0;
+    margin-top: 15px;
+    transition: opacity 1s ease;
+}
+.Chat-messages--typing .Chat-message--dots {
+    opacity: 100;
+    transition: opacity 0.35s ease;
+    transition-delay: 3s;
+}
+
+.Chat-bubble {
+    background: #F2D7EE;
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: #1a1a1a;
+}
+
+.Chat-dots, .Chat-dot3, .Chat-dot2 {
+    width: 30px;
+    height: 20px;
+    fill: red;
+}
+
+.Chat-dots, .Chat-dot3, .Chat-dot2, .Chat-dot1 {
+    fill: #1a1a1a;
+    animation: Chat-dots 2s infinite;
+}
+
+.Chat-dot2 {
+    animation-delay: 0.3s;
+}
+
+.Chat-dot3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes Chat-dots {
+    0% {
+        opacity: 0;
+        transform: translate(0, 1px);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, -1px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 1px);
+    }
+}
+
+.Chat-input {
+    display: flex;
+    padding: 30px;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 20px 20px;
+}
+
+.Chat-smileyBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.Chat-smileyBtn:focus {
+    outline: none;
+}
+
+.Chat-smiley {
+    width: 18px;
+    height: 18px;
+    fill: #888;
+    cursor: pointer;
+}
+
+.Chat-submitBtn {
+    display: none;
+}
+
+.Chat-inputField {
+    font-size: 18px;
+    flex: 1;
+    border: none;
+}
+.Chat-inputField:focus {
+    outline: none;
+}
