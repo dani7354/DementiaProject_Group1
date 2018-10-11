@@ -9,8 +9,68 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Hello World!</h1>
+    <div class="Chat">
+        <div class="Chat-messages js-messageContainer">
+            <div class="Chat-message Chat-message--user">
+                <span class="Chat-bubble">hey..</span>
+            </div>
+            <div class="Chat-message Chat-message--bot">
+                <span class="Chat-bubble">hi :)</span>
+            </div>
+            <div class="Chat-message Chat-message--user">
+                <span class="Chat-bubble">i'm lonley</span>
+            </div>
+            <div class="Chat-message Chat-message--bot">
+                <span class="Chat-bubble">i feel you bro...</span>
+            </div>
+            <div class="Chat-message Chat-message--bot">
+                <span class="Chat-bubble">let's make you happy</span>
+            </div>
+            <div class="Chat-message Chat-message--dots js-dots">
+                <span class="Chat-bubble">
+                    <svg class="Chat-dots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g class="Chat-dots">
+                            <circle class="Chat-dot1" cx="1" cy="20" r="3"/>
+                            <circle class="Chat-dot2" cx="12" cy="20" r="3"/>
+                            <circle class="Chat-dot3" cx="24" cy="20" r="3"/>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <form class="Chat-input js-inputForm" autocomplete="off">
+            <input type="text" class="Chat-inputField js-inputField" placeholder="Write a reply...">
+            <svg class="Chat-smiley" viewBox="0 0 18 18"><path d="M9 0a9 9 0 1 1 0 18A9 9 0 0 1 9 0zm0 1C4.589 1 1 4.589 1 9s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM5 6.999a1 1 0 1 1 2.002.004A1 1 0 0 1 5 6.999zm5.999 0a1.002 1.002 0 0 1 2.001 0 1 1 0 1 1-2.001 0zM8.959 13.5c-.086 0-.173-.002-.26-.007-2.44-.132-4.024-2.099-4.09-2.182l-.31-.392.781-.62.312.39c.014.017 1.382 1.703 3.37 1.806 1.306.072 2.61-.554 3.882-1.846l.351-.356.712.702-.35.356c-1.407 1.427-2.886 2.15-4.398 2.15z" fill-rule="evenodd"></path></svg>
+
+            <input type="submit" class="Chat-submitBtn" />
+        </form>
+    </div>
+
+    <script>
+        const messageContainer = document.querySelector('.js-messageContainer')
+        const inputForm = document.querySelector('.js-inputForm')
+        const inputField = document.querySelector('.js-inputField')
+        const dots = document.querySelector('.js-dots')
+
+        inputForm.addEventListener('submit', (e) => {
+            const userMessage = inputField.value
+            const messageDiv = document.createElement('div')
+            const messageBubble = `<span class="Chat-bubble">${userMessage}</span>`
+
+            messageDiv.classList.add('Chat-message', 'Chat-message--user')
+            messageDiv.innerHTML += messageBubble
+
+            messageContainer.insertBefore(messageDiv, dots)
+            messageContainer.classList.add('Chat-messages--typing')
+
+            e.preventDefault()
+            inputForm.reset()
+        })
+    </script>
 </body>
 </html>
