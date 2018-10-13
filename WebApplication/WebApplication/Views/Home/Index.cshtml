@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 
 <html>
@@ -150,6 +151,7 @@
     </style>
 </head>
 <body>
+   @await Html.PartialAsync("_HeaderNavbar")
     <div class="Chat">
         <div class="Chat-messages js-messageContainer">
             <div class="Chat-message Chat-message--user">

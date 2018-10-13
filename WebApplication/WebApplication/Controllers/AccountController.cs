@@ -53,7 +53,7 @@ namespace WebApplication.Controllers
             return Redirect(returnUrl);
         }
 
-        [HttpPost]
+        [HttpPost, Route("logout")]
         public async Task<IActionResult> Logout(string returnUrl = null)
         {
             await _signinManager.SignOutAsync();
