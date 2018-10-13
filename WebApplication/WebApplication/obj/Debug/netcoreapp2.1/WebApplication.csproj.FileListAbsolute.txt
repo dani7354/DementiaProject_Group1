@@ -58,3 +58,12 @@ C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.RazorTargetAssemblyInfo.cs
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.dll
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.pdb
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.deps.json
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.runtimeconfig.json
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.runtimeconfig.dev.json
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.dll
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.pdb
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.Views.dll
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin\Debug\netcoreapp2.1\WebApplication.Views.pdb
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.Views.pdb
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.csproj.CopyComplete
