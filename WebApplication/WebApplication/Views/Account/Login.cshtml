@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication.Models.LoginViewModel
 @{
     Layout = null;
 }
@@ -11,5 +11,33 @@
     <title>Login</title>
 </head>
 <body>
+    <fieldset>
+        <h1>Login</h1>
+        @using (Html.BeginForm("Login", "Account"))
+        {
+            @Html.ValidationSummary()
+
+
+            <p>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.RememberMe)
+                @Html.CheckBoxFor(m => m.RememberMe)
+            </p>
+          
+            <p>
+                <button type="submit">Go</button>
+            </p>
+
+        }
+
+    </fieldset>
+
 </body>
 </html>

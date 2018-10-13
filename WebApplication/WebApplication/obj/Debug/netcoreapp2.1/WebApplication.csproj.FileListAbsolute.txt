@@ -68,3 +68,4 @@ C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\bin
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.Views.pdb
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\WebApplication.csproj.CopyComplete
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
