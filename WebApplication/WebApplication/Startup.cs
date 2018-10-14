@@ -41,7 +41,8 @@ namespace WebApplication
                     options.UseSqlServer(Configuration.GetValue<string>("ConnectionStrings:IdentityDataContext"));
                 });
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDataContext>();
+                .AddEntityFrameworkStores<IdentityDataContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +56,7 @@ namespace WebApplication
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

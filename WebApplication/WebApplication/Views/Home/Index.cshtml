@@ -3,6 +3,7 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 
 <html>
@@ -133,7 +134,7 @@
             outline: none;
         }
 
-        @keyframes Chat-dots {
+        @@keyframes Chat-dots {
             0% {
                 opacity: 0;
                 transform: translate(0, 1px);
@@ -150,6 +151,7 @@
     </style>
 </head>
 <body>
+   @await Html.PartialAsync("_HeaderNavbar")
     <div class="Chat">
         <div class="Chat-messages js-messageContainer">
             <div class="Chat-message Chat-message--user">
