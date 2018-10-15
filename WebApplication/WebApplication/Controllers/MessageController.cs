@@ -12,7 +12,9 @@ namespace WebApplication.Controllers
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
+            // Here we should have some calls to an API that can reply the message
 
+            // for testing purposes only
             return Json(new {Reply = $"Controller received: {message}" });
         }
     }
