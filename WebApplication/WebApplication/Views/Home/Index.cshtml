@@ -2,173 +2,23 @@
 @{
     Layout = null;
 }
-
-
 <!DOCTYPE html>
-
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/js/chat.js" async></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 
     <style>
-        *, *:before, *:after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            font-family: "Open Sans", sans-serif;
-            background: #eaeaea;
-        }
-
-        .Chat {
-            max-width: 500px;
-            margin: 30px auto;
-            background: white;
-            border-radius: 20px;
-        }
-
-        .Chat-messages {
-            height: 440px;
-            padding: 30px;
-        }
-
-        .Chat-messages > * + * {
-            margin-top: 40px;
-        }
-
-        .Chat-message--user {
-            text-align: right;
-        }
-
-        .Chat-message--user .Chat-bubble {
-            background: #A5668B;
-            color: white;
-        }
-
-        .Chat-message--user + .Chat-message--user {
-            margin-top: 15px;
-        }
-
-        .Chat-message--bot + .Chat-message--bot {
-            margin-top: 15px;
-        }
-
-        .Chat-message--dots {
-            opacity: 0;
-            margin-top: 15px;
-            transition: opacity 1s ease;
-        }
-        .Chat-messages--typing .Chat-message--dots {
-            opacity: 100;
-            transition: opacity 0.35s ease;
-            transition-delay: 3s;
-        }
-
-        .Chat-bubble {
-            background: #F2D7EE;
-            padding: 6px 10px;
-            border-radius: 10px;
-            color: #1a1a1a;
-        }
-
-        .Chat-dots, .Chat-dot3, .Chat-dot2 {
-            width: 30px;
-            height: 20px;
-        }
-
-        .Chat-dots, .Chat-dot3, .Chat-dot2, .Chat-dot1 {
-            fill: #1a1a1a;
-            animation: Chat-dots 2s infinite;
-        }
-
-        .Chat-dot2 {
-            animation-delay: 0.3s;
-        }
-
-        .Chat-dot3 {
-            animation-delay: 0.6s;
-        }
-
-        .Chat-input {
-            display: flex;
-            padding: 30px;
-            border-top: 1px solid #ddd;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .Chat-smileyBtn {
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .Chat-smileyBtn:focus {
-            outline: none;
-        }
-
-        .Chat-smiley {
-            width: 18px;
-            height: 18px;
-            fill: #888;
-            cursor: pointer;
-        }
-
-        .Chat-submitBtn {
-            display: none;
-        }
-
-        .Chat-inputField {
-            font-size: 18px;
-            flex: 1;
-            border: none;
-        }
-
-        .Chat-inputField:focus {
-            outline: none;
-        }
-
-        @@keyframes Chat-dots {
-            0% {
-                opacity: 0;
-                transform: translate(0, 1px);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(0, -1px);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(0, 1px);
-            }
-        }
     </style>
 </head>
 <body>
    @await Html.PartialAsync("_HeaderNavbar")
     <div class="Chat">
         <div class="Chat-messages js-messageContainer">
-            <div class="Chat-message Chat-message--user">
-                <span class="Chat-bubble">hey..</span>
-            </div>
-            <div class="Chat-message Chat-message--bot">
-                <span class="Chat-bubble">hi :)</span>
-            </div>
-            <div class="Chat-message Chat-message--user">
-                <span class="Chat-bubble">i'm lonley</span>
-            </div>
-            <div class="Chat-message Chat-message--bot">
-                <span class="Chat-bubble">i feel you bro...</span>
-            </div>
-            <div class="Chat-message Chat-message--bot">
-                <span class="Chat-bubble">let's make you happy</span>
-            </div>
+            
             <div class="Chat-message Chat-message--dots js-dots">
                 <span class="Chat-bubble">
                     <svg class="Chat-dots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -182,34 +32,11 @@
             </div>
         </div>
 
-        <form class="Chat-input js-inputForm" autocomplete="off">
+        <form class="Chat-input js-inputForm"  autocomplete="off">
             <input type="text" class="Chat-inputField js-inputField" placeholder="Write a reply...">
             <svg class="Chat-smiley" viewBox="0 0 18 18"><path d="M9 0a9 9 0 1 1 0 18A9 9 0 0 1 9 0zm0 1C4.589 1 1 4.589 1 9s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zM5 6.999a1 1 0 1 1 2.002.004A1 1 0 0 1 5 6.999zm5.999 0a1.002 1.002 0 0 1 2.001 0 1 1 0 1 1-2.001 0zM8.959 13.5c-.086 0-.173-.002-.26-.007-2.44-.132-4.024-2.099-4.09-2.182l-.31-.392.781-.62.312.39c.014.017 1.382 1.703 3.37 1.806 1.306.072 2.61-.554 3.882-1.846l.351-.356.712.702-.35.356c-1.407 1.427-2.886 2.15-4.398 2.15z" fill-rule="evenodd"></path></svg>
-
             <input type="submit" class="Chat-submitBtn" />
         </form>
     </div>
-
-    <script>
-        const messageContainer = document.querySelector('.js-messageContainer')
-        const inputForm = document.querySelector('.js-inputForm')
-        const inputField = document.querySelector('.js-inputField')
-        const dots = document.querySelector('.js-dots')
-
-        inputForm.addEventListener('submit', (e) => {
-            const userMessage = inputField.value
-            const messageDiv = document.createElement('div')
-            const messageBubble = `<span class="Chat-bubble">${userMessage}</span>`
-
-            messageDiv.classList.add('Chat-message', 'Chat-message--user')
-            messageDiv.innerHTML += messageBubble
-
-            messageContainer.insertBefore(messageDiv, dots)
-            messageContainer.classList.add('Chat-messages--typing')
-
-            e.preventDefault()
-            inputForm.reset()
-        })
-    </script>
 </body>
 </html>
