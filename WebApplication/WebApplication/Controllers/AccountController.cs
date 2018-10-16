@@ -48,7 +48,7 @@ namespace WebApplication.Controllers
                 return View();
             }
 
-            if (string.IsNullOrWhiteSpace(returnUrl))
+            if (string.IsNullOrWhiteSpace(returnUrl) && !Url.IsLocalUrl(returnUrl))
                 return RedirectToAction("Index", "Home");
 
             return Redirect(returnUrl);
