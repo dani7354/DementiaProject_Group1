@@ -16,6 +16,7 @@
         @using (Html.BeginForm("Register", "Account"))
         {
             @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
 
            
             <p>

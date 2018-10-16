@@ -29,6 +29,7 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost, Route("login")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel login, string returnUrl = null)
         {
             if (!ModelState.IsValid)
@@ -71,6 +72,7 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost, Route("register")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registration)
         {
             if (!ModelState.IsValid)
