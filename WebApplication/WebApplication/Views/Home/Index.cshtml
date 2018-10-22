@@ -16,7 +16,7 @@
 </head>
 <body>
    @await Html.PartialAsync("_HeaderNavbar")
-    <div class="Chat">
+    <div class="Chat js-chat">
         <div class="Chat-messages js-messageContainer">
 
             <div class="Chat-message Chat-message--dots js-dots">
@@ -38,7 +38,7 @@
                 fill-rule="evenodd"></path></svg>
             <svg class="Chat-icon" viewBox="0 0 18 18"><path d="M10.325 6.571v4.344c0 2.29-1.75 3.657-4.678 3.657-1.495 0-4.971-.346-4.971-3.548V6.572H0v4.452c0 3.485 3.448 4.08 5.163 4.159v2.194H3.609V18h3.782v-.623H5.838v-2.184c2.53-.055 5.162-1.2 5.162-4.278V6.57h-.675z"
             /><path d="M5.5 13.714c2.022 0 3.667-1.466 3.667-3.267v-7.18C9.167 1.466 7.522 0 5.5 0S1.833 1.466 1.833 3.267v7.18c0 1.802 1.645 3.267 3.667 3.267zM2.75 3.528c0-1.473 1.234-2.67 2.75-2.67s2.75 1.197 2.75 2.67v3.33h-5.5v-3.33zm0 4.186h5.5v2.724c0 1.334-1.234 2.42-2.75 2.42s-2.75-1.086-2.75-2.42V7.714z"/></svg>
-            <input type="submit" class="Chat-submitBtn" />
+            <input type="submit" class="Chat-submitBtn" value="Send" />
         </form>
     </div>
 </body>
