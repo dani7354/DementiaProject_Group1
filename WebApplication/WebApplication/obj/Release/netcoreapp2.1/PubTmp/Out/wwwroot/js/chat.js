@@ -6,7 +6,7 @@ const dots = document.querySelector('.js-dots')
 
 inputForm.addEventListener('submit', (e) => {
     e.preventDefault()
-
+    let userMessage = inputField.value
     if (userMessage === 'clear') {
         Clear()
     } else if (!userMessage) {
