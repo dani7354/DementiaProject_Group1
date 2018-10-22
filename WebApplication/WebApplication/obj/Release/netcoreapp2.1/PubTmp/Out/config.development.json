@@ -1,6 +1,5 @@
 {
   "ConnectionStrings": {
-    "IdentityDataContext": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=UserIdentity;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+    "IdentityDataContext": "Server=tcp:chatbotgroup1dbserver.database.windows.net,1433;Initial Catalog=ChatBot_Identity;Persist Security Info=False;User ID=group1;Password=Password123.;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   }
-
 }

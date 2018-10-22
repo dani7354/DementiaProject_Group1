@@ -70,3 +70,4 @@ C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_HeaderNavbar.g.cshtml.cs
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

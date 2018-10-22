@@ -1,6 +1,3 @@
 {
-  "ConnectionStrings": {
-    "IdentityDataContext": "Data Source=chatbotgroup1dbserver.database.windows.net;Initial Catalog=ChatBot_Identity;User ID=group1;Password=Password123.;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-  }
 
 }
