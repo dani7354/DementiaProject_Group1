@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WebApplication",
-    "\\WebApplication\\WebApplication"
+    "\\WebApplication\\WebApplication",
+    "\\WebApplication\\WebApplication\\Controllers"
   ],
-  "SelectedNode": "\\WebApplication\\WebApplication.sln",
+  "SelectedNode": "\\WebApplication\\WebApplication\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false
 }
