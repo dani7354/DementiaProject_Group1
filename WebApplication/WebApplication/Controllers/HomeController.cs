@@ -17,7 +17,7 @@ namespace WebApplication.Controllers
         }
 
         private readonly SignInManager<IdentityUser> _signInManager;
-       // [Authorize]
+        [Authorize]
         public IActionResult Index()
         {
             return View();
