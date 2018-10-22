@@ -13,7 +13,8 @@ namespace WebApplication.Controllers
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
-            if(message?.ToLower() == "hi")
+           if(message == null) return Json(new { Reply = $"Sorry, I didn't understand." });
+            if (message?.ToLower() == "hi")
             {
                 return Json(new { Reply = "Hello" });
             }
@@ -21,15 +22,10 @@ namespace WebApplication.Controllers
             {
                 return Json(new { Reply = "I'm good, thanks!" });
             }
-
             else
             {
                 return Json(new { Reply = $"Sorry, I didn't understand." });
             }
-            // Here we should have some calls to an API that can reply the message
-
-            // for testing purposes only
-            
         }
     }
 }
