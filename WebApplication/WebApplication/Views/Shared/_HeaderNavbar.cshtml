@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+<nav>
+    <ul>
+        @if (_signInManager.IsSignedIn(User))
+        {
+            <li>@User.Identity.Name</li>
+            <li>
+                <form id="logout" action="@Url.Action("Logout", "Account")" method="POST">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        }
+    </ul>
+</nav>
