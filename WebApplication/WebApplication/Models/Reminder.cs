@@ -15,6 +15,5 @@ namespace WebApplication.Models
         public IdentityUser User { get; set; }
         public DateTime Time { get; set; }
         public bool ShouldRepeat { get; set; }
-
     }
 }
