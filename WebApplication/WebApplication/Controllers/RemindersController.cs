@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +15,12 @@ namespace WebApplication.Controllers
     public class RemindersController : Controller
     {
         private readonly ReminderDataContext _context;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public RemindersController(ReminderDataContext context)
+        public RemindersController(ReminderDataContext context, SignInManager<IdentityUser> signInManager)
         {
             _context = context;
+            _signInManager = signInManager;
         }
 
         // GET: Reminders
@@ -54,15 +58,49 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,Time,ShouldRepeat")] Reminder reminder)
+        public async Task<IActionResult> Create(string reminder)
         {
-            if (ModelState.IsValid)
+            MatchCollection mc = Regex.Matches(reminder, "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+            if (mc.Count != 0)
             {
-                _context.Add(reminder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var hour = Convert.ToInt32(mc.FirstOrDefault().Value.Split(':').First());
+                var minute = Convert.ToInt32(mc.FirstOrDefault().Value.Split(':').Last());
+
+                var time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, second: 00);
+
+                if (time < DateTime.Now) time = time.AddDays(1); // for test
+
+                var newReminder = new Reminder()
+                {
+                    Description = reminder,
+                    Time = time,
+                    User = null, // for test
+                    ShouldRepeat = false // for test
+                };
+
+                return Json(new { Reply = $"{reminder}" });
+
             }
-            return View(reminder);
+            else
+            {
+               return Json(new { Reply = $"Sorry, I find the time for the reminder" });
+            }
+           
+
+
+
+
+
+          
+
+
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(reminder);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(reminder);
         }
 
         // GET: Reminders/Edit/5

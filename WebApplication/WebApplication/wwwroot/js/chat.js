@@ -9,7 +9,10 @@ inputForm.addEventListener('submit', (e) => {
     let userMessage = inputField.value
     if (userMessage === 'clear') {
         Clear()
-    } else if (!userMessage) {
+    } else if (userMessage.includes("remind")) {
+        CreateReminder()
+    }
+    else if (!userMessage) {
         return
     } else {
         ShowUserMessage()
@@ -49,6 +52,20 @@ function GetReply() {
         url: '/message/reply',
         data: {
             message: $('.js-inputField').val()
+        },
+        dataType: 'json',
+        success: function (response) {
+            ShowReply(response.reply)
+        },
+    })
+}
+function CreateReminder() {
+    ShowUserMessage()
+    $.ajax({
+        type: 'POST',
+        url: '/reminders/create',
+        data: {
+            reminder: $('.js-inputField').val()
         },
         dataType: 'json',
         success: function (response) {

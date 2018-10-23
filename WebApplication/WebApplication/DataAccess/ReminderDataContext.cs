@@ -14,5 +14,6 @@ namespace WebApplication.DataAccess
         {
             Database.EnsureCreated();
         }
+        
     }
 }
