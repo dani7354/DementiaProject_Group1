@@ -19,23 +19,23 @@ namespace WebApplication.DataAccess
 
         private class Metadata
         {
-            public string Name { get; set; }
-            public string Value { get; set; }
+            public string name { get; set; }
+            public string value { get; set; }
         }
 
         private class Answer
         {
-            public IList<string> Questions { get; set; }
-            public string AnswerMessage { get; set; }
-            public double Score { get; set; }
-            public int Id { get; set; }
-            public string Source { get; set; }
-            public IList<object> Keywords { get; set; }
-            public IList<Metadata> Metadata { get; set; }
+            public IList<string> questions { get; set; }
+            public string answer { get; set; }
+            public double score { get; set; }
+            public int id { get; set; }
+            public string source { get; set; }
+            public IList<object> keywords { get; set; }
+            public IList<Metadata> metadata { get; set; }
         }
         private class QnAAnswer
         {
-            public IList<Answer> Answers { get; set; }
+            public IList<Answer> answers { get; set; }
         }
 
         public IOptions<QnAAPIServiceOptions> Options { get; }
@@ -48,13 +48,13 @@ namespace WebApplication.DataAccess
             var response = await Post(uri, questionJSON);
 
             var answers = JsonConvert.DeserializeObject<QnAAnswer>(response);
-            if (answers.Answers.Count > 0)
+            if (answers.answers.Count > 0)
             {
                 Random rnd = new Random();
-                var answerMessage= answers.Answers.ElementAt(0).AnswerMessage;
+                var answerMessage= answers.answers.ElementAt(0).answer;
                 if(answerMessage == null)
                 {
-                    return answers.Answers[0].Questions[0];
+                    return answers.answers[0].questions[0];
                 }
                 else
                 {
