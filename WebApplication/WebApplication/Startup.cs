@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.DataAccess;
+using WebApplication.DataAccess.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace WebApplication
 {
@@ -38,6 +40,12 @@ namespace WebApplication
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataContext>()
                 .AddDefaultTokenProviders();
+            services.AddTransient<IChatbotAPIService>(x => new QnAAPIService(Options.Create(new QnAAPIServiceOptions()
+            {
+                Hostname = Configuration.GetValue<string>("ChatbotAPIService:Hostname"),
+                KnowledgeBaseId = Configuration.GetValue<string>("ChatbotAPIService:KnowledgeBaseId"),
+                EndpointKey = Configuration.GetValue<string>("ChatbotAPIService:EndpointKey")
+            })));
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -46,8 +54,6 @@ namespace WebApplication
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();

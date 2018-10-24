@@ -3,29 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Net.Http.Headers;
+using System.Web;
+using Newtonsoft.Json;
+using WebApplication.DataAccess.Interfaces;
+using WebApplication.DataAccess;
 
 namespace WebApplication.Controllers
 {
     [Route("message")]
     public class MessageController : Controller
     {
+        public MessageController(IChatbotAPIService chatbotAPIService)
+        {
+            ChatbotAPIService = chatbotAPIService;
+        }
+
+        public IChatbotAPIService ChatbotAPIService { get; }
 
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
-           if(message == null) return Json(new { Reply = $"Sorry, I didn't understand." });
-            if (message?.ToLower() == "hi")
-            {
-                return Json(new { Reply = "Hello" });
-            }
-            if (message.ToLower().Contains("how are you"))
-            {
-                return Json(new { Reply = "I'm good, thanks!" });
-            }
-            else
-            {
-                return Json(new { Reply = $"Sorry, I didn't understand." });
-            }
+            var reply = ChatbotAPIService.GetReplyAsync(message).Result;
+
+            return Json(new { Reply = reply });
+         
         }
+       
+
     }
 }
