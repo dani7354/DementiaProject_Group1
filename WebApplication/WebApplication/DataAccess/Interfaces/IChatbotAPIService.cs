@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.DataAccess.Interfaces
 {
-    interface IChatbotAPIService
+    public interface IChatbotAPIService
     {
         Task<string> GetReplyAsync(string message);
     }
