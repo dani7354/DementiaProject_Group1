@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "508fee09cb0b1bef4c0f69eb83f783d485056cb7"
+    "signature": "f91f924a5cc6711aabb1b93e86eb670f92daa741"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,8 @@
     ".NETCoreApp,Version=v2.1": {
       "WebApplication/1.0.0": {
         "dependencies": {
+          "Google.Apis": "1.36.1",
+          "Google.Apis.Dialogflow.v2": "1.36.1.1385",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
@@ -33,6 +35,70 @@
         },
         "compile": {
           "WebApplication.dll": {}
+        }
+      },
+      "Google.Apis/1.36.1": {
+        "dependencies": {
+          "Google.Apis.Core": "1.36.1",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.dll": {
+            "assemblyVersion": "1.36.1.0",
+            "fileVersion": "1.36.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.dll": {}
+        }
+      },
+      "Google.Apis.Auth/1.36.1": {
+        "dependencies": {
+          "Google.Apis": "1.36.1",
+          "Google.Apis.Core": "1.36.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
+            "assemblyVersion": "1.36.1.0",
+            "fileVersion": "1.36.1.0"
+          },
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {
+            "assemblyVersion": "1.36.1.0",
+            "fileVersion": "1.36.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {}
+        }
+      },
+      "Google.Apis.Core/1.36.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "assemblyVersion": "1.36.1.0",
+            "fileVersion": "1.36.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {}
+        }
+      },
+      "Google.Apis.Dialogflow.v2/1.36.1.1385": {
+        "dependencies": {
+          "Google.Apis": "1.36.1",
+          "Google.Apis.Auth": "1.36.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Dialogflow.v2.dll": {
+            "assemblyVersion": "1.36.1.1385",
+            "fileVersion": "1.36.1.1385"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Dialogflow.v2.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3462,6 +3528,34 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Google.Apis/1.36.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NBfotn7kOSd1biulilvCu3CIWr5kI4gXBNGGZyvOgE+ilR06zTPY9kPSVblYUoYPsXFvouZOS8GYPhnpnAK/Zw==",
+      "path": "google.apis/1.36.1",
+      "hashPath": "google.apis.1.36.1.nupkg.sha512"
+    },
+    "Google.Apis.Auth/1.36.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ECo2d+X7gDaa3iBHUTMgW1XZZa9MnjZ3ehAY4oAwpmypcQmvRNchvsuKRxqXq4fwCyGO6gS6iEi6hi6pPxwc0A==",
+      "path": "google.apis.auth/1.36.1",
+      "hashPath": "google.apis.auth.1.36.1.nupkg.sha512"
+    },
+    "Google.Apis.Core/1.36.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UVcewN+O3kQ0bJ+pSH10RLc2vMNmgBGetXGY9HQms3W0PXWqiIh2PioVggwrfLmL/6wYBJA9N3l+vA/C2yS0kw==",
+      "path": "google.apis.core/1.36.1",
+      "hashPath": "google.apis.core.1.36.1.nupkg.sha512"
+    },
+    "Google.Apis.Dialogflow.v2/1.36.1.1385": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9c3GL05KmjAS39cfXfpWkq7uQksE/Zm/AzNJPaFNLg2eJVCI/BK0Wi1yzHeRjNXBfyMYrkGqcGXMdg69brUoAw==",
+      "path": "google.apis.dialogflow.v2/1.36.1.1385",
+      "hashPath": "google.apis.dialogflow.v2.1.36.1.1385.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",
