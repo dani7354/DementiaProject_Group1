@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Google.Apis.Dialogflow.v2;
 using System.Net;
 using System.Net.Http;
 using System.Text;
