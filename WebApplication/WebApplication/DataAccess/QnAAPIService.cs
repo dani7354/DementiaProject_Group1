@@ -51,7 +51,15 @@ namespace WebApplication.DataAccess
             if (answers.Answers.Count > 0)
             {
                 Random rnd = new Random();
-                return answers.Answers.ElementAt(rnd.Next(0, answers.Answers.Count - 1)).AnswerMessage;
+                var answerMessage= answers.Answers.ElementAt(rnd.Next(0, answers.Answers.Count - 1)).AnswerMessage;
+                if(answerMessage == null)
+                {
+                    return answers.Answers[0].Questions[0];
+                }
+                else
+                {
+                    return answerMessage;
+                }
             }
             else
             {
