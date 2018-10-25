@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Web;
 using Newtonsoft.Json;
 using WebApplication.DataAccess.Interfaces;
+using WebApplication.Models;
 using WebApplication.DataAccess;
 
 namespace WebApplication.Controllers
@@ -28,7 +29,14 @@ namespace WebApplication.Controllers
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
-             _logService.SaveMessage(message);
+            var newMessage = new Message()
+            {
+                User = "Chat user",
+                Text = message,
+                Sent = DateTime.Now
+            };
+             _logService.SaveMessage(newMessage);
+
             var reply = _chatbotAPIService.GetReplyAsync(message).Result;
             return Json(new { Reply = reply });
         }

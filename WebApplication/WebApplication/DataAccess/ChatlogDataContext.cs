@@ -8,22 +8,16 @@ using WebApplication.Models;
 
 namespace WebApplication.DataAccess
 {
-    public class MessageDataContext : DbContext, IChatlogService
+    public class MessageDataContext : DbContext
     {
         public DbSet<Message> Messages { get; set; }
         public MessageDataContext(DbContextOptions<MessageDataContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
-        public async void SaveMessage(string message)
+        public async void SaveMessage(Message message)
         {
-            var newMessage = new Message()
-            {
-                Sent = DateTime.Now,
-                Text = message,
-                User = "Chat user" // for test purposes only
-            };
-            Messages.Add(newMessage);
+            Messages.Add(message);
             await SaveChangesAsync();
         }
     }
