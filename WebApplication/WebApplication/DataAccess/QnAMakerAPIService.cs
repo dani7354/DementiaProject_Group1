@@ -48,24 +48,14 @@ namespace WebApplication.DataAccess
             var response = await Post(uri, questionJSON);
 
             var answers = JsonConvert.DeserializeObject<QnAAnswer>(response);
-            if (answers.answers.Count > 0)
-            {
-                Random rnd = new Random();
-                var answerMessage= answers.answers.ElementAt(0).answer;
-                if(answerMessage == null)
-                {
-                    return answers.answers[0].questions[0];
-                }
-                else
-                {
-                    return answerMessage;
-                }
+            if (answers.answers.Count > 0 && answers.answers[0].answer != "No good match found in KB.")
+            { 
+                return answers.answers.ElementAt(0).answer;
             }
             else
             {
                 return "Sorry, I did not understand";
             }
-
         }
         private async Task<string> Post(string uri, string body)
         {
