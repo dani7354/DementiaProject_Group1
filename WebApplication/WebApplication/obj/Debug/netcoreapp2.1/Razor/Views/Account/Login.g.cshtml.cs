@@ -49,7 +49,7 @@ namespace AspNetCore
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(101, 157, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be04778fb80743a997c01340d093f894", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7046f4542b34f0c94954dde728de43f", async() => {
                 BeginContext(107, 144, true);
                 WriteLiteral("\r\n    <link rel=\"stylesheet\" href=\"/css/login_style.css\">\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Login</title>\r\n");
                 EndContext();
@@ -69,7 +69,7 @@ namespace AspNetCore
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(260, 801, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44bbfb6287b948729b5844ea4a82a6fc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9342c0bb9e34fdd9aedf92547eea9da", async() => {
                 BeginContext(266, 85, true);
                 WriteLiteral("\r\n    <img src=\"/img/smiley-beemo.png\" alt=\"Smiley face\">\r\n\r\n        <h1>Login</h1>\r\n");
                 EndContext();
