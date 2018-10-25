@@ -42,7 +42,7 @@ namespace WebApplication.DataAccess
         public async Task<string> GetReplyAsync(string message)
         {
             string uri = _options.Value.Hostname + "/qnamaker/knowledgebases/" + _options.Value.KnowledgeBaseId + "/generateAnswer";
-            string questionJSON = @"{'question': '" + message + "'}";
+            string questionJSON = "{\"question\": \""+ message +"\"}";
 
             var response = await Post(uri, questionJSON);
 
