@@ -28,9 +28,14 @@ namespace WebApplication.Controllers
             {
                 return Json(new { Reply = "Hello" });
             }
+            if (message.ToLower().Contains("how are you"))
+            {
+                return Json(new { Reply = "I'm good, thanks!" });
+            }
+
             else
             {
-                return Json(new { Reply = $"Controller received: {message}" });
+                return Json(new { Reply = $"Sorry, I didn't understand." });
             }
             // Here we should have some calls to an API that can reply the message
 
