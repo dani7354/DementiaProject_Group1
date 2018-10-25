@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
+using WebApplication.Models;
 
 namespace WebApplication
 {
@@ -43,6 +44,7 @@ namespace WebApplication
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataContext>()
                 .AddDefaultTokenProviders();
+            services.AddTransient<SentenceHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

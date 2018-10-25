@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
@@ -10,10 +11,20 @@ namespace WebApplication.Controllers
     public class MessageController : Controller
     {
 
+        private readonly SentenceHandler _sentenceHandler;
+       public MessageController(SentenceHandler sentenceHandler)
+        {
+            _sentenceHandler = sentenceHandler;
+        }
+
+
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
-            if(message?.ToLower() == "hi")
+
+
+
+            if (message?.ToLower() == "hi")
             {
                 return Json(new { Reply = "Hello" });
             }
