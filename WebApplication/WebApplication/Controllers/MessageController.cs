@@ -18,7 +18,7 @@ namespace WebApplication.Controllers
     [Route("message")]
     public class MessageController : Controller
     {
-        public MessageController(IChatbotAPIService chatbotAPIService, IMessageDbContext messageDataContext)
+        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext messageDataContext)
         {
             _chatbotAPIService = chatbotAPIService;
             _messageDataContext = messageDataContext;
