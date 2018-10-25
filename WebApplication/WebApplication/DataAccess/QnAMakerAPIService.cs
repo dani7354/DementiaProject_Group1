@@ -10,9 +10,9 @@ using WebApplication.DataAccess.Interfaces;
 
 namespace WebApplication.DataAccess
 {
-    public class QnAAPIService : IChatbotAPIService
+    public class QnAMakerAPIService : IChatbotAPIService
     {
-        public QnAAPIService(IOptions<QnAAPIServiceOptions> options)
+        public QnAMakerAPIService(IOptions<QnAAPIServiceOptions> options)
         {
             Options = options;
         }

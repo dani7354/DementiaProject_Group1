@@ -40,7 +40,7 @@ namespace WebApplication
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataContext>()
                 .AddDefaultTokenProviders();
-            services.AddTransient<IChatbotAPIService>(x => new QnAAPIService(Options.Create(new QnAAPIServiceOptions()
+            services.AddTransient<IChatbotAPIService>(x => new QnAMakerAPIService(Options.Create(new QnAAPIServiceOptions()
             {
                 Hostname = Configuration.GetValue<string>("ChatbotAPIService:Hostname"),
                 KnowledgeBaseId = Configuration.GetValue<string>("ChatbotAPIService:KnowledgeBaseId"),
