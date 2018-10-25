@@ -18,27 +18,39 @@ namespace WebApplication.Controllers
     [Route("message")]
     public class MessageController : Controller
     {
-        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext logService)
+        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext messageDataContext)
         {
             _chatbotAPIService = chatbotAPIService;
-            _logService = logService;
+            _messageDataContext = messageDataContext;
         }
         private IChatbotAPIService _chatbotAPIService;
-        private MessageDataContext _logService;
+        private MessageDataContext _messageDataContext;
 
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
             var newMessage = new Message()
             {
-                User = "Chat user",
+                User = "Chatuser",
                 Text = message,
                 Sent = DateTime.Now
             };
-             _logService.SaveMessage(newMessage);
-
-            var reply = _chatbotAPIService.GetReplyAsync(message).Result;
+             _messageDataContext.SaveMessage(newMessage);
+            var reply = _chatbotAPIService.GetReplyAsync(newMessage.Text).Result;
             return Json(new { Reply = reply });
+        }
+
+        [HttpGet, Route("user/{user}")]
+        public IActionResult GetMessagesByUser(string user)
+        {
+            var messages = _messageDataContext.Messages.Where(m => m.User == user);
+            return Ok(messages);
+        }
+        [HttpGet, Route("")]
+        public IActionResult GetAllMessages()
+        {
+            var messages = _messageDataContext.Messages.OrderBy(m => m.Sent);
+            return Ok(messages);
         }
     }
 }
