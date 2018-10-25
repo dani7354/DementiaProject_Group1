@@ -96,6 +96,7 @@ function addReply(reply) {
     messageDiv.classList.add('Chat-message', 'Chat-message--bot')
     messageDiv.innerHTML += messageBubble;
     messageContainer.insertBefore(messageDiv, dots)
+    messageContainer.classList.remove('Chat-messages--typing')
 }
 
 function getReply(userMessage) {
