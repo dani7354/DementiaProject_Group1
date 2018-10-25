@@ -19,7 +19,6 @@ namespace WebApplication.Controllers
         {
             _signinManager = signInManager;
             _userManager = userManager;
-
         }
 
         [Route("login")]

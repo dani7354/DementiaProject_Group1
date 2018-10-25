@@ -12,11 +12,11 @@ namespace WebApplication.DataAccess
 {
     public class QnAMakerAPIService : IChatbotAPIService
     {
+        private readonly IOptions<QnAAPIServiceOptions> _options;
         public QnAMakerAPIService(IOptions<QnAAPIServiceOptions> options)
         {
             _options = options;
         }
-
         private class Metadata
         {
             public string name { get; set; }
@@ -36,9 +36,6 @@ namespace WebApplication.DataAccess
         {
             public IList<Answer> answers { get; set; }
         }
-
-        private readonly IOptions<QnAAPIServiceOptions> _options;
-
         public async Task<string> GetReplyAsync(string message)
         {
             string uri = _options.Value.Hostname + "/qnamaker/knowledgebases/" + _options.Value.KnowledgeBaseId + "/generateAnswer";
@@ -65,7 +62,6 @@ namespace WebApplication.DataAccess
                 request.RequestUri = new Uri(uri);
                 request.Content = new StringContent(body, Encoding.UTF8, "application/json");
                 request.Headers.Add("Authorization", "EndpointKey " + _options.Value.EndpointKey);
-
                 var response = await client.SendAsync(request);
                 return await response.Content.ReadAsStringAsync();
             }

@@ -17,22 +17,20 @@ namespace WebApplication.Controllers
     [Route("message")]
     public class MessageController : Controller
     {
-        public MessageController(IChatbotAPIService chatbotAPIService)
+        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext logService)
         {
-            ChatbotAPIService = chatbotAPIService;
+            _chatbotAPIService = chatbotAPIService;
+            _logService = logService;
         }
-
-        public IChatbotAPIService ChatbotAPIService { get; }
+        private IChatbotAPIService _chatbotAPIService;
+        private MessageDataContext _logService;
 
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
-            var reply = ChatbotAPIService.GetReplyAsync(message).Result;
-
+             _logService.SaveMessage(message);
+            var reply = _chatbotAPIService.GetReplyAsync(message).Result;
             return Json(new { Reply = reply });
-         
         }
-       
-
     }
 }
