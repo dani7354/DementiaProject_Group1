@@ -45,6 +45,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
+    getReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -67,7 +68,7 @@ inputForm.addEventListener('submit', (e) => {
         return
     } else {
         addMessage(userMessage)
-        getReply()
+        getReply(userMessage)
 
         if (messageContainer.scrollHeight > messageContainer.clientHeight) {
             chat.classList.add('Chat--overflown')
@@ -97,11 +98,11 @@ function addReply(reply) {
     messageContainer.insertBefore(messageDiv, dots)
 }
 
-function getReply() {
+function getReply(userMessage) {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: { message: inputField.value },
+        data: { message: userMessage },
         dataType: 'json',
         success: function (response) {
             addReply(response.reply)
