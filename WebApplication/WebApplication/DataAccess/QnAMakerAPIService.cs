@@ -14,7 +14,7 @@ namespace WebApplication.DataAccess
     {
         public QnAMakerAPIService(IOptions<QnAAPIServiceOptions> options)
         {
-            Options = options;
+            _options = options;
         }
 
         private class Metadata
@@ -22,7 +22,6 @@ namespace WebApplication.DataAccess
             public string name { get; set; }
             public string value { get; set; }
         }
-
         private class Answer
         {
             public IList<string> questions { get; set; }
@@ -38,11 +37,11 @@ namespace WebApplication.DataAccess
             public IList<Answer> answers { get; set; }
         }
 
-        public IOptions<QnAAPIServiceOptions> Options { get; }
+        private readonly IOptions<QnAAPIServiceOptions> _options;
 
         public async Task<string> GetReplyAsync(string message)
         {
-            string uri = Options.Value.Hostname + "/qnamaker/knowledgebases/" + Options.Value.KnowledgeBaseId + "/generateAnswer";
+            string uri = _options.Value.Hostname + "/qnamaker/knowledgebases/" + _options.Value.KnowledgeBaseId + "/generateAnswer";
             string questionJSON = @"{'question': '" + message + "'}";
 
             var response = await Post(uri, questionJSON);
@@ -65,7 +64,7 @@ namespace WebApplication.DataAccess
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(uri);
                 request.Content = new StringContent(body, Encoding.UTF8, "application/json");
-                request.Headers.Add("Authorization", "EndpointKey " + Options.Value.EndpointKey);
+                request.Headers.Add("Authorization", "EndpointKey " + _options.Value.EndpointKey);
 
                 var response = await client.SendAsync(request);
                 return await response.Content.ReadAsStringAsync();
