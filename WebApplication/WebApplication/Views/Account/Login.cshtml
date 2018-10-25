@@ -7,10 +7,12 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="/css/login_style.css">
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
 </head>
 <body>
+    <img src="/img/smiley-beemo.png" alt="Smiley face">
     <fieldset>
         <h1>Login</h1>
         @using (Html.BeginForm("Login", "Account"))
@@ -31,15 +33,15 @@
                 @Html.LabelFor(m => m.RememberMe)
                 @Html.CheckBoxFor(m => m.RememberMe)
             </p>
-          
+
             <p>
                 <button type="submit">Go</button>
             </p>
-            <p> @Html.ActionLink("Don't have an account? Sign up!", "Register", "Account")</p>
+             <div class="Link">@Html.ActionLink("Don't have an account? Sign up!", "Register", "Account")</div>
 
         }
     </fieldset>
-   
+
 
 </body>
 </html>
