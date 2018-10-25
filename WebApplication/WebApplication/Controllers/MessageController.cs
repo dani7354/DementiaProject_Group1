@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using WebApplication.DataAccess.Interfaces;
 using WebApplication.DataAccess;
 using WebApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
@@ -40,12 +41,14 @@ namespace WebApplication.Controllers
             return Json(new { Reply = reply });
 
         }
+        [Authorize]
         [HttpGet, Route("user/{user}")]
         public IActionResult GetMessagesByUser(string user)
         {
             var messages = _messageDataContext.GetMessageByUser(user);
             return Ok(messages);
         }
+        [Authorize]
         [HttpGet, Route("")]
         public IActionResult GetAllMessages()
         {

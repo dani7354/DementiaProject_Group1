@@ -1,19 +1,8 @@
 ﻿@model WebApplication.Models.LoginViewModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <link rel="stylesheet" href="/css/login_style.css">
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
     <img src="/img/smiley-beemo.png" alt="Smiley face">
-
         <h1>Login</h1>
         @using (Html.BeginForm("Login", "Account"))
         {
@@ -33,5 +22,3 @@
             
              <div class="Link">@Html.ActionLink("Don't have an account? Sign up!", "Register", "Account")</div>
         }
-</body>
-</html>

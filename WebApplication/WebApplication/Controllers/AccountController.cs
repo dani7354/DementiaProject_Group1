@@ -25,6 +25,7 @@ namespace WebApplication.Controllers
         [Route("login")]
         public IActionResult Login()
         {
+            ViewBag.Title = "Login";
             return View(new LoginViewModel());
         }
 
@@ -68,6 +69,7 @@ namespace WebApplication.Controllers
         [HttpGet, Route("register")]
         public IActionResult Register()
         {
+            ViewBag.Title = "Register";
             return View(new RegisterViewModel());
         }
 
