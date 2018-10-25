@@ -1,19 +1,73 @@
 ﻿const chat = document.querySelector('.js-chat')
 const messageContainer = document.querySelector('.js-messageContainer')
+const options = document.querySelector('.js-options')
+const optionsBtn = document.querySelector('.js-optionsBtn')
+const dots = document.querySelector('.js-dots')
+const beemo = document.querySelector('.js-beemo')
+
 const inputForm = document.querySelector('.js-inputForm')
 const inputField = document.querySelector('.js-inputField')
-const dots = document.querySelector('.js-dots')
+const speakBtn = document.querySelector('.js-speakBtn')
+
+const minus = document.querySelector('.js-minus')
+const plus = document.querySelector('.js-plus')
+
+const colorRed = document.querySelector('.js-red')
+const colorBlue = document.querySelector('.js-blue')
+const colorGreen = document.querySelector('.js-green')
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const recognition = new SpeechRecognition()
+
+let myZoom = 100
+
+minus.addEventListener('click', () => {
+    document.body.style.zoom = `${myZoom -= 10}%`
+})
+
+plus.addEventListener('click', () => {
+    document.body.style.zoom = `${myZoom += 10}%`
+})
+
+colorBlue.addEventListener('click', () => {
+    chat.classList.toggle('blue')
+})
+
+optionsBtn.addEventListener('click', () => {
+    options.classList.toggle('options')
+    console.log('yolo')
+})
+
+recognition.onresult = function (event) {
+    let current = event.resultIndex
+    let transcript = event.results[current][0].transcript
+
+    console.log('results are in: ')
+    console.log(transcript)
+    addMessage(transcript)
+    beemo.classList.remove('Chat-beemo--listening')
+    chat.classList.remove('recording')
+}
+
+speakBtn.addEventListener('click', () => {
+    beemo.classList.toggle('Chat-beemo--listening')
+    chat.classList.toggle('recording')
+    console.log('start recording')
+    recognition.start()
+})
 
 inputForm.addEventListener('submit', (e) => {
+    const userMessage = inputField.value
+
     e.preventDefault()
-    let userMessage = inputField.value
+
     if (userMessage === 'clear') {
-        Clear()
+        clear()
     } else if (!userMessage) {
         return
     } else {
-        ShowUserMessage()
-        GetReply()
+        addMessage(userMessage)
+        getReply()
 
         if (messageContainer.scrollHeight > messageContainer.clientHeight) {
             chat.classList.add('Chat--overflown')
@@ -21,20 +75,20 @@ inputForm.addEventListener('submit', (e) => {
     }
 
     inputForm.reset()
+    inputField.focus()
 })
 
-function ShowUserMessage() {
-    let userMessage = inputField.value
-    let messageDiv = document.createElement('div')
-    let messageBubble = `<span class="Chat-bubble">${userMessage}</span>`
+function addMessage(message) {
+    const messageDiv = document.createElement('div')
+    const messageBubble = `<span class="Chat-bubble">${message}</span>`
 
     messageDiv.classList.add('Chat-message', 'Chat-message--user')
-    messageDiv.innerHTML += messageBubble;
+    messageDiv.innerHTML += messageBubble
     messageContainer.insertBefore(messageDiv, dots)
     messageContainer.classList.add('Chat-messages--typing')
 }
 
-function ShowReply(reply) {
+function addReply(reply) {
     let messageDiv = document.createElement('div')
     let messageBubble = `<span class="Chat-bubble">${reply}</span>`
 
@@ -43,21 +97,19 @@ function ShowReply(reply) {
     messageContainer.insertBefore(messageDiv, dots)
 }
 
-function GetReply() {
+function getReply() {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: {
-            message: $('.js-inputField').val()
-        },
+        data: { message: inputField.value },
         dataType: 'json',
         success: function (response) {
-            ShowReply(response.reply)
+            addReply(response.reply)
         },
     })
 }
 
-function Clear() {
+function clear() {
     const messages = document.querySelectorAll('.Chat-message')
 
     messages.forEach(message => {
