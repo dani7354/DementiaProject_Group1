@@ -18,20 +18,20 @@ namespace WebApplication.Controllers
     [Route("message")]
     public class MessageController : Controller
     {
-        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext messageDataContext)
+        public MessageController(IChatbotAPIService chatbotAPIService, IMessageDbContext messageDataContext)
         {
             _chatbotAPIService = chatbotAPIService;
             _messageDataContext = messageDataContext;
         }
-        private IChatbotAPIService _chatbotAPIService;
-        private MessageDataContext _messageDataContext;
+        private readonly IChatbotAPIService _chatbotAPIService;
+        private readonly IMessageDbContext _messageDataContext;
 
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
             var newMessage = new Message()
             {
-                User = "Chatuser",
+                User = "Chatuser", 
                 Text = message,
                 Sent = DateTime.Now
             };
@@ -43,13 +43,13 @@ namespace WebApplication.Controllers
         [HttpGet, Route("user/{user}")]
         public IActionResult GetMessagesByUser(string user)
         {
-            var messages = _messageDataContext.Messages.Where(m => m.User == user);
+            var messages = _messageDataContext.GetMessageByUser(user);
             return Ok(messages);
         }
         [HttpGet, Route("")]
         public IActionResult GetAllMessages()
         {
-            var messages = _messageDataContext.Messages.OrderBy(m => m.Sent);
+            var messages = _messageDataContext.GetAllMessages();
             return Ok(messages);
         }
     }

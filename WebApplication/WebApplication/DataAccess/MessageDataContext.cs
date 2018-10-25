@@ -8,7 +8,7 @@ using WebApplication.Models;
 
 namespace WebApplication.DataAccess
 {
-    public class MessageDataContext : DbContext
+    public class MessageDataContext : DbContext, IMessageDbContext
     {
         public DbSet<Message> Messages { get; set; }
         public MessageDataContext(DbContextOptions<MessageDataContext> options) : base(options)
@@ -19,6 +19,16 @@ namespace WebApplication.DataAccess
         {
             Messages.Add(message);
             await SaveChangesAsync();
+        }
+
+        public IList<Message> GetAllMessages()
+        {
+            return Messages.ToList() ;
+        }
+
+        public IList<Message> GetMessageByUser(string user)
+        {
+            return Messages.Where(m=> m.User == user).ToList();
         }
     }
 }
