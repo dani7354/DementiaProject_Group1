@@ -9,6 +9,24 @@
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName)
+
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName)
+
+    @Html.LabelFor(m => m.Age)
+    @Html.TextBoxFor(m => m.Age)
+
+    @Html.LabelFor(m => m.PhoneNumber)
+    @Html.TextBoxFor(m => m.PhoneNumber)
+
+    @Html.LabelFor(m => m.ContactPerson)
+    @Html.TextBoxFor(m => m.ContactPerson)
+
+    @Html.LabelFor(m => m.NameOfNextKin)
+    @Html.TextBoxFor(m => m.NameOfNextKin)
+
     @Html.LabelFor(m => m.Email)
     @Html.TextBoxFor(m => m.Email)
 
@@ -17,7 +35,7 @@
 
     @Html.LabelFor(m => m.ConfirmPassword)
     @Html.PasswordFor(m => m.ConfirmPassword)
-    <button type="submit">Go</button>
+    <button type="submit">Register</button>
     <div class="Link">@Html.ActionLink("Already have an account? Go to the login page", "Login", "Account")</div>
 
 }

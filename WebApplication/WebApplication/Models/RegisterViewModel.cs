@@ -23,5 +23,25 @@ namespace WebApplication.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Firstname")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Lastname")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Age")]
+        public int Age { get; set; }
+
+        [Phone]
+        [Display(Name = "Phone number")]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "Contact person")]  
+        public string ContactPerson { get; set; }
+
+        [Display(Name = "Name of next kin")]
+        public string NameOfNextKin { get; set; }
     }
 }
