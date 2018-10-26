@@ -12,6 +12,7 @@ body {
   font-family: "Open Sans", sans-serif;
   background: #eaeaea;
   font-size: 16px;
+  user-select: none;
 }
 @media (min-width: 800px) {
   body {
@@ -39,6 +40,15 @@ body {
   display: flex;
   align-items: center;
   height: 120px;
+  z-index: 3;
+  background: white;
+  transition: background 0.2s ease-in-out;
+}
+.dark .Chat-options, .green .Chat-options {
+  background: #0f1310;
+}
+.light .Chat-options {
+  background: white;
 }
 
 .Chat-colors {
@@ -57,6 +67,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .Chat-color + .Chat-color {
   margin-left: 30px;
@@ -65,7 +76,7 @@ body {
   border: 2px solid #0f1310;
   background: #ecefea;
 }
-.dark .Chat-color--light {
+.dark .Chat-color--light, .green .Chat-color--light {
   border: none;
 }
 .Chat-color--dark {
@@ -75,7 +86,7 @@ body {
   background: black;
 }
 .Chat-color--green {
-  background: #7cbf52;
+  background: #639e3d;
 }
 
 .Chat-optionsIcon {
@@ -84,6 +95,7 @@ body {
   transform: translateX(-50%);
   width: 60px;
   height: 60px;
+  cursor: pointer;
   fill: #5f5f5f;
 }
 .dark .Chat-optionsIcon, .green .Chat-optionsIcon {
@@ -92,11 +104,12 @@ body {
 
 .Chat-font {
   position: absolute;
-  right: calc(50% - 210px);
+  right: calc(50% - 250px);
   opacity: 0;
   transition: opacity 1s ease;
   font-size: 38px;
   color: #5f5f5f;
+  user-select: none;
 }
 .dark .Chat-font, .green .Chat-font {
   color: #ecefea;
@@ -105,12 +118,18 @@ body {
   opacity: 1;
 }
 
-.Chat-fontPlus {
-  padding-left: 4px;
+.Chat-fontPlus,
+.Chat-fontMinus {
+  cursor: pointer;
 }
 
 .Chat-fontMinus {
-  padding-right: 10px;
+  padding: 20px 24px;
+  font-size: 40px;
+}
+
+.Chat-fontPlus {
+  padding: 20px;
 }
 
 .Chat-speakBtn {
@@ -118,10 +137,10 @@ body {
   bottom: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #7cbf52;
+  background: #639e3d;
   border: none;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
   color: white;
   font-size: 14px;
@@ -161,27 +180,29 @@ body {
   }
 }
 
-.Chat-beemo {
+.Chat-beemo img {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #7cbf52;
-  text-align: center;
+  top: 45%;
+  transform: translate(-53%, -50%);
+  width: 180px;
+  transition: opacity 0.5s ease-in-out;
+  transition-delay: 0.2s;
 }
-.Chat-beemo .Chat-beemo2 {
-  display: none;
+.dark .Chat-beemo .Chat-beemoWaving, .green .Chat-beemo .Chat-beemoWaving {
+  transition: none;
+  opacity: 0;
 }
-.Chat-beemo--listening .Chat-beemo1 {
-  display: none;
+.light .Chat-beemo .Chat-beemoWaving {
+  opacity: 1;
 }
-.Chat-beemo--listening .Chat-beemo2 {
-  display: inline-block;
+.light .Chat-beemo .Chat-beemoWavingDark {
+  transition: none;
+  opacity: 0;
 }
-.dark .Chat-beemo {
-  color: #ecefea;
+.dark .Chat-beemo .Chat-beemoWavingDark, .green .Chat-beemo .Chat-beemoWavingDark {
+  opacity: 1;
 }
-
 .Chat-messages {
   flex: 1;
   padding: 30px 10px 15px;
@@ -243,14 +264,14 @@ body {
   text-align: right;
 }
 .Chat-message--user .Chat-bubble {
-  background: #7cbf52;
+  background: #639e3d;
   color: white;
 }
 .dark .Chat-message--user .Chat-bubble {
   background: #2b2f2c;
 }
 .green .Chat-message--user .Chat-bubble {
-  background: #558a34;
+  background: #639e3d;
 }
 .Chat-message--user + .Chat-message--user {
   margin-top: 20px;
@@ -272,6 +293,11 @@ body {
   opacity: 0;
   margin-top: 15px;
   transition: opacity 1s ease;
+}
+@media (min-width: 800px) {
+  .Chat-message--dots {
+    margin-top: 34px;
+  }
 }
 .Chat-messages--typing .Chat-message--dots {
   opacity: 100;
@@ -343,6 +369,9 @@ body {
 .dark .Chat-smileyIcon {
   fill: #ccc;
 }
+.green .Chat-smileyIcon {
+  fill: #639e3d;
+}
 
 .Chat-submitBtn {
   display: inline-block;
@@ -359,16 +388,21 @@ body {
   transition: all 0.2s ease;
   -webkit-appearance: none;
 }
-.dark .Chat-submitBtn, .green .Chat-submitBtn {
+.dark .Chat-submitBtn {
   background: #2b2f2c;
   border-color: #2b2f2c;
+  color: white;
+}
+.green .Chat-submitBtn {
+  background: #639e3d;
+  border-color: #639e3d;
   color: white;
 }
 @media (min-width: 800px) {
   .Chat-submitBtn {
     padding: 1rem 2rem;
-    font-size: 16px;
-    border-width: 2px;
+    font-size: 18px;
+    border-width: 3px;
   }
 }
 

@@ -1,4 +1,4 @@
-﻿const chat = document.querySelector('.js-chat')
+const chat = document.querySelector('.js-chat')
 const messageContainer = document.querySelector('.js-messageContainer')
 const options = document.querySelector('.js-options')
 const optionsBtn = document.querySelector('.js-optionsBtn')
@@ -52,14 +52,13 @@ optionsBtn.addEventListener('click', () => {
     console.log('yolo')
 })
 
-recognition.onresult = function (event) {
+recognition.onresult = function(event) {
     let current = event.resultIndex
     let transcript = event.results[current][0].transcript
 
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    getReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -82,7 +81,6 @@ inputForm.addEventListener('submit', (e) => {
         return
     } else {
         addMessage(userMessage)
-        getReply(userMessage)
     }
 
     inputForm.reset()
