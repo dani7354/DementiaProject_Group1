@@ -80,6 +80,9 @@ inputForm.addEventListener('submit', (e) => {
         clear()
     } else if (!userMessage) {
         return
+    } else if (userMessage === 'i want to go to the cooking class' || userMessage === 'I want to go to the cooking class') {
+        addMessage(userMessage)
+        setTimeout(() => cookingClass(), 2000)
     } else {
         addMessage(userMessage)
         getReply(userMessage)
@@ -101,10 +104,6 @@ function addMessage(message) {
     if (messageContainer.scrollHeight > messageContainer.clientHeight) {
         chat.classList.add('Chat--overflown')
     }
-
-    if (message === 'i want to go to the cooking class' || message === 'I want to go to the cooking class') {
-        setTimeout(() => cookingClass(), 2000)
-    }
 }
 
 function addReply(reply) {
@@ -115,6 +114,10 @@ function addReply(reply) {
     messageDiv.innerHTML += messageBubble;
     messageContainer.insertBefore(messageDiv, dots)
     messageContainer.classList.remove('Chat-messages--typing')
+
+    if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+        chat.classList.add('Chat--overflown')
+    }
 }
 
 function cookingClass() {
