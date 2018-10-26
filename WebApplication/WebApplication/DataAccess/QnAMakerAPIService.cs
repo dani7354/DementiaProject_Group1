@@ -42,11 +42,10 @@ namespace WebApplication.DataAccess
 
         public async Task<string> GetReplyAsync(string message)
         {
-            string uri = _options.Value.Hostname + "/qnamaker/knowledgebases/" + _options.Value.KnowledgeBaseId + "/generateAnswer";
-            string questionJSON = "{\"question\": \""+ message +"\"}";
+            var uri = _options.Value.Hostname + "/qnamaker/knowledgebases/" + _options.Value.KnowledgeBaseId + "/generateAnswer";
+            var questionJSON = "{\"question\": \""+ message +"\"}";
 
             var response = await Post(uri, questionJSON);
-
             var answers = JsonConvert.DeserializeObject<QnAAnswer>(response);
             if (answers.answers.Count > 0 && answers.answers[0].answer != "No good match found in KB.")
             { 
