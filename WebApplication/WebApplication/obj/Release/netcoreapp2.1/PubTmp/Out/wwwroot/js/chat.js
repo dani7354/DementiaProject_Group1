@@ -59,7 +59,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    addReply(transcript)
+    getReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -82,7 +82,7 @@ inputForm.addEventListener('submit', (e) => {
         return
     } else {
         addMessage(userMessage)
-        addReply(userMessage)
+        getReply(userMessage)
     }
 
     inputForm.reset()
@@ -147,11 +147,11 @@ function cookingClass() {
     }, 6000)
 }
 
-function getReply() {
+function getReply(userMessage) {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: { message: inputField.value },
+        data: { message: userMessage },
         dataType: 'json',
         success: function (response) {
             addReply(response.reply)
