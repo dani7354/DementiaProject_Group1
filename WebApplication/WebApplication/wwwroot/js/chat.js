@@ -81,6 +81,7 @@ inputForm.addEventListener('submit', (e) => {
     } else if (!userMessage) {
         return
     } else if (userMessage === 'i want to go to the cooking class' || userMessage === 'I want to go to the cooking class') {
+        addMessage(userMessage)
         setTimeout(() => cookingClass(), 2000)
     } else {
         addMessage(userMessage)
@@ -140,6 +141,10 @@ function cookingClass() {
 
     setTimeout(() => {
         messageContainer.insertBefore(woofImage, dots)
+
+        if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+            chat.classList.add('Chat--overflown')
+        }
     }, 3000)
 
     setTimeout(() => {
