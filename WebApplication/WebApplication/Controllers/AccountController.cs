@@ -19,12 +19,12 @@ namespace WebApplication.Controllers
         {
             _signinManager = signInManager;
             _userManager = userManager;
-
         }
 
         [Route("login")]
         public IActionResult Login()
         {
+            ViewBag.Title = "Login";
             return View(new LoginViewModel());
         }
 
@@ -68,6 +68,7 @@ namespace WebApplication.Controllers
         [HttpGet, Route("register")]
         public IActionResult Register()
         {
+            ViewBag.Title = "Register";
             return View(new RegisterViewModel());
         }
 
@@ -83,6 +84,7 @@ namespace WebApplication.Controllers
                 Email = registration.Email,
                 UserName = registration.Email,
             };
+            
 
             var result = await _userManager.CreateAsync(newUser, registration.Password);
 

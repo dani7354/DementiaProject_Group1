@@ -12,8 +12,8 @@ const speakBtn = document.querySelector('.js-speakBtn')
 const minus = document.querySelector('.js-minus')
 const plus = document.querySelector('.js-plus')
 
-const colorRed = document.querySelector('.js-red')
-const colorBlue = document.querySelector('.js-blue')
+const colorLight = document.querySelector('.js-light')
+const colorDark = document.querySelector('.js-dark')
 const colorGreen = document.querySelector('.js-green')
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
@@ -29,8 +29,22 @@ plus.addEventListener('click', () => {
     document.body.style.zoom = `${myZoom += 10}%`
 })
 
-colorBlue.addEventListener('click', () => {
-    chat.classList.toggle('blue')
+colorLight.addEventListener('click', () => {
+    chat.classList.add('light')
+    chat.classList.remove('dark')
+    chat.classList.remove('green')
+})
+
+colorDark.addEventListener('click', () => {
+    chat.classList.remove('light')
+    chat.classList.add('dark')
+    chat.classList.remove('green')
+})
+
+colorGreen.addEventListener('click', () => {
+    chat.classList.remove('light')
+    chat.classList.remove('dark')
+    chat.classList.add('green')
 })
 
 optionsBtn.addEventListener('click', () => {

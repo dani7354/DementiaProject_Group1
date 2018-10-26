@@ -1,45 +1,24 @@
 ﻿@model WebApplication.Models.LoginViewModel
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <fieldset>
+    <img src="/img/smiley-beemo.png" alt="Smiley face">
         <h1>Login</h1>
         @using (Html.BeginForm("Login", "Account"))
         {
             @Html.ValidationSummary()
             @Html.AntiForgeryToken()
-
-
-            <p>
+            
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
-            </p>
-            <p>
+                @Html.TextBoxFor(m => m.Email)        
+            
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
-            </p>
-            <p>
+                    
                 @Html.LabelFor(m => m.RememberMe)
                 @Html.CheckBoxFor(m => m.RememberMe)
-            </p>
-          
-            <p>
-                <button type="submit">Go</button>
-            </p>
-            <p> @Html.ActionLink("Don't have an account? Sign up!", "Register", "Account")</p>
-
+             
+                <button type="submit">Login</button>
+            
+             <div class="Link">@Html.ActionLink("Don't have an account? Sign up!", "Register", "Account")</div>
         }
-    </fieldset>
-   
-
-</body>
-</html>

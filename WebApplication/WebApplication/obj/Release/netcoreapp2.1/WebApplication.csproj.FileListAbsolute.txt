@@ -25,3 +25,4 @@ C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Release\netcoreapp2.1\WebApplication.dll
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Release\netcoreapp2.1\WebApplication.pdb
 C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Release\netcoreapp2.1\WebApplication.csproj.CopyComplete
+C:\Users\d\Source\Repos\DementiaProject_Group1\WebApplication\WebApplication\obj\Release\netcoreapp2.1\Razor\Views\Account\_Layout.g.cshtml.cs
