@@ -114,6 +114,10 @@ function addReply(reply) {
     messageDiv.innerHTML += messageBubble;
     messageContainer.insertBefore(messageDiv, dots)
     messageContainer.classList.remove('Chat-messages--typing')
+
+    if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+        chat.classList.add('Chat--overflown')
+    }
 }
 
 function cookingClass() {
