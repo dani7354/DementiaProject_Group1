@@ -10,7 +10,6 @@
         <title>Beemo</title>
     </head>
     <body>
-    @await Html.PartialAsync("_HeaderNavbar")
         <div class="Chat js-chat light">
             <div class="Chat-options js-options options">
                 <ul class="Chat-colors">
@@ -39,12 +38,7 @@
                     /></svg>
             </button>
             <div class="Chat-messages js-messageContainer Chat-messages--typing">
-                <div class="Chat-message Chat-message--user">
-                    <span class="Chat-bubble">hey..</span>
-                </div>
-                <div class="Chat-message Chat-message--bot">
-                    <span class="Chat-bubble">hi :)</span>
-                </div>
+            
                 <div class="Chat-message Chat-message--dots js-dots">
                     <span class="Chat-bubble">
                         <svg class="Chat-dots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
