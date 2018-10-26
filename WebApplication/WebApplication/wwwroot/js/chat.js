@@ -59,7 +59,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    getReply(transcript)
+    addReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -82,7 +82,7 @@ inputForm.addEventListener('submit', (e) => {
         return
     } else {
         addMessage(userMessage)
-        getReply(userMessage)
+        addReply(userMessage)
     }
 
     inputForm.reset()
@@ -123,18 +123,28 @@ function cookingClass() {
     woofImage.style.width = '280px'
     woofImage.style.borderRadius = '15px'
     woofImage.style.marginTop = '30px'
+    woofImage.style.marginBottom = '-17px'
     woofImage.classList.add('Chat-message')
 
     messageContainer.classList.add('Chat-messages--typing')
 
     setTimeout(() => {
         addReply('omg me too!')
+        messageContainer.classList.add('Chat-messages--typing')
     }, 1000)
 
     setTimeout(() => {
         messageContainer.insertBefore(woofImage, dots)
-        messageContainer.classList.remove('Chat-messages--typing')
     }, 3000)
+
+    setTimeout(() => {
+        addReply('the cooking class will take place in building E')
+        messageContainer.classList.add('Chat-messages--typing')
+    }, 5000)
+
+    setTimeout(() => {
+        addReply('do you want me to set a reminder for you?')
+    }, 6000)
 }
 
 function getReply() {
