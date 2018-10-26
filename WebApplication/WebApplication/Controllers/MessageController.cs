@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
 
         private readonly IMessageDbContext _messageDataContext;
         private readonly IChatbotAPIService _chatbotAPIService;
-        public MessageController(IChatbotAPIService chatbotAPIService, MessageDataContext messageDataContext)
+        public MessageController(IChatbotAPIService chatbotAPIService, IMessageDbContext messageDataContext)
         {
             _chatbotAPIService = chatbotAPIService;
             _messageDataContext = messageDataContext;

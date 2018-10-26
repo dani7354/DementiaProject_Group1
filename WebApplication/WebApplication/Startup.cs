@@ -46,7 +46,7 @@ namespace WebApplication
                 KnowledgeBaseId = Configuration.GetValue<string>("ChatbotAPIService:KnowledgeBaseId"),
                 EndpointKey = Configuration.GetValue<string>("ChatbotAPIService:EndpointKey")
             })));
-            services.AddDbContext<MessageDataContext>(options =>
+            services.AddDbContext<IMessageDbContext, MessageDataContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetValue<string>("ConnectionStrings:ChatlogDataContext"));
             });

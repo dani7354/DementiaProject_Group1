@@ -19,7 +19,6 @@ namespace WebApplication.Controllers
         {
             _signinManager = signInManager;
             _userManager = userManager;
-
         }
 
         [Route("login")]
@@ -85,6 +84,7 @@ namespace WebApplication.Controllers
                 Email = registration.Email,
                 UserName = registration.Email,
             };
+            
 
             var result = await _userManager.CreateAsync(newUser, registration.Password);
 
