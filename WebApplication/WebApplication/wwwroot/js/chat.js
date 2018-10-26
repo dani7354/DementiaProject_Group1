@@ -59,7 +59,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    addReply(transcript)
+    getReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -84,7 +84,7 @@ inputForm.addEventListener('submit', (e) => {
         setTimeout(() => cookingClass(), 2000)
     } else {
         addMessage(userMessage)
-        addReply(userMessage)
+        getReply(userMessage)
     }
 
     inputForm.reset()
