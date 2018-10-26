@@ -16,7 +16,7 @@ namespace WebApplication.DataAccess
         {
             _options = options;
         }
-
+        #region nested classes for json deserialization
         private class Metadata
         {
             public string name { get; set; }
@@ -36,6 +36,7 @@ namespace WebApplication.DataAccess
         {
             public IList<Answer> answers { get; set; }
         }
+        #endregion
 
         private readonly IOptions<QnAAPIServiceOptions> _options;
 
