@@ -59,7 +59,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    getReply(transcript)
+    addReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -80,12 +80,9 @@ inputForm.addEventListener('submit', (e) => {
         clear()
     } else if (!userMessage) {
         return
-    } else if (userMessage === 'i want to go to the cooking class' || userMessage === 'I want to go to the cooking class') {
-        addMessage(userMessage)
-        setTimeout(() => cookingClass(), 2000)
     } else {
         addMessage(userMessage)
-        getReply(userMessage)
+        addReply(userMessage)
     }
 
     inputForm.reset()
@@ -104,6 +101,10 @@ function addMessage(message) {
     if (messageContainer.scrollHeight > messageContainer.clientHeight) {
         chat.classList.add('Chat--overflown')
     }
+
+    if (message === 'i want to go to the cooking class' || message === 'I want to go to the cooking class') {
+        setTimeout(() => cookingClass(), 2000)
+    }
 }
 
 function addReply(reply) {
@@ -112,12 +113,10 @@ function addReply(reply) {
 
     messageDiv.classList.add('Chat-message', 'Chat-message--bot')
     messageDiv.innerHTML += messageBubble;
-    messageContainer.insertBefore(messageDiv, dots)
-    messageContainer.classList.remove('Chat-messages--typing')
-
-    if (messageContainer.scrollHeight > messageContainer.clientHeight) {
-        chat.classList.add('Chat--overflown')
-    }
+    setTimeout(() => {
+        messageContainer.insertBefore(messageDiv, dots)
+        messageContainer.classList.remove('Chat-messages--typing')
+    }, 1500)
 }
 
 function cookingClass() {
@@ -150,11 +149,11 @@ function cookingClass() {
     }, 6000)
 }
 
-function getReply(userMessage) {
+function getReply() {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: { message: userMessage },
+        data: { message: inputField.value },
         dataType: 'json',
         success: function (response) {
             addReply(response.reply)
