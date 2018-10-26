@@ -23,6 +23,8 @@ namespace WebApplication.Controllers
             RemindersContext = remindersContext;
         }
 
+        string tempReply;
+
         public IChatbotAPIService ChatbotAPIService { get; }
         public RemindersContext RemindersContext { get; }
 
@@ -32,6 +34,30 @@ namespace WebApplication.Controllers
             
             var reply = ChatbotAPIService.GetReplyAsync(message).Result;
 
+
+            if (reply == "RemindMessage")
+            {
+                try
+                {
+                    tempReply = RemindersContext.ReminderHandler(message);
+
+                    reply = $"I will remind you to {tempReply}";
+                }
+                catch (Exception e)
+                {
+                    reply = "Sorry, I could not save the reminder";
+                }
+            }else if (reply == "RemindCount")
+            {
+                try
+                {
+                    reply = RemindersContext.GetReminderCount();
+                }
+                catch (Exception e)
+                {
+                    reply = "Sorry, I could not find any reminders";
+                }
+            }
             return Json(new { Reply = reply });
          
             

@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="config.development.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
@@ -15,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="config.development.json" />
     <None Include="wwwroot\css\style.css" />
   </ItemGroup>
 
