@@ -113,9 +113,14 @@ function addReply(reply) {
 
     messageDiv.classList.add('Chat-message', 'Chat-message--bot')
     messageDiv.innerHTML += messageBubble;
+
     setTimeout(() => {
         messageContainer.insertBefore(messageDiv, dots)
         messageContainer.classList.remove('Chat-messages--typing')
+
+        if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+            chat.classList.add('Chat--overflown')
+        }
     }, 1500)
 }
 
