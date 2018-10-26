@@ -59,7 +59,7 @@ recognition.onresult = function (event) {
     console.log('results are in: ')
     console.log(transcript)
     addMessage(transcript)
-    getReply(transcript)
+    addReply(transcript)
     beemo.classList.remove('Chat-beemo--listening')
     chat.classList.remove('recording')
 }
@@ -82,11 +82,7 @@ inputForm.addEventListener('submit', (e) => {
         return
     } else {
         addMessage(userMessage)
-        getReply(userMessage)
-
-        if (messageContainer.scrollHeight > messageContainer.clientHeight) {
-            chat.classList.add('Chat--overflown')
-        }
+        addReply(userMessage)
     }
 
     inputForm.reset()
@@ -101,6 +97,14 @@ function addMessage(message) {
     messageDiv.innerHTML += messageBubble
     messageContainer.insertBefore(messageDiv, dots)
     messageContainer.classList.add('Chat-messages--typing')
+
+    if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+        chat.classList.add('Chat--overflown')
+    }
+
+    if (message === 'i want to go to the cooking class' || message === 'I want to go to the cooking class') {
+        setTimeout(() => cookingClass(), 2000)
+    }
 }
 
 function addReply(reply) {
@@ -113,11 +117,41 @@ function addReply(reply) {
     messageContainer.classList.remove('Chat-messages--typing')
 }
 
-function getReply(userMessage) {
+function cookingClass() {
+    let woofImage = document.createElement('img')
+    woofImage.src = 'https://i.imgur.com/JITrrJ0.png'
+    woofImage.style.width = '280px'
+    woofImage.style.borderRadius = '15px'
+    woofImage.style.marginTop = '30px'
+    woofImage.style.marginBottom = '-17px'
+    woofImage.classList.add('Chat-message')
+
+    messageContainer.classList.add('Chat-messages--typing')
+
+    setTimeout(() => {
+        addReply('omg me too!')
+        messageContainer.classList.add('Chat-messages--typing')
+    }, 1000)
+
+    setTimeout(() => {
+        messageContainer.insertBefore(woofImage, dots)
+    }, 3000)
+
+    setTimeout(() => {
+        addReply('the cooking class will take place in building E')
+        messageContainer.classList.add('Chat-messages--typing')
+    }, 5000)
+
+    setTimeout(() => {
+        addReply('do you want me to set a reminder for you?')
+    }, 6000)
+}
+
+function getReply() {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: { message: userMessage },
+        data: { message: inputField.value },
         dataType: 'json',
         success: function (response) {
             addReply(response.reply)
