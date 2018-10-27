@@ -13,6 +13,7 @@ using WebApplication.DataAccess.Interfaces;
 using WebApplication.DataAccess;
 using WebApplication.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApplication.Controllers
 {
@@ -22,17 +23,19 @@ namespace WebApplication.Controllers
 
         private readonly IMessageDbContext _messageDataContext;
         private readonly IChatbotAPIService _chatbotAPIService;
-        public MessageController(IChatbotAPIService chatbotAPIService, IMessageDbContext messageDataContext)
+        private readonly SignInManager<IdentityUser> _signInManager;
+        public MessageController(IChatbotAPIService chatbotAPIService, IMessageDbContext messageDataContext, SignInManager<IdentityUser> signInManager)
         {
             _chatbotAPIService = chatbotAPIService;
             _messageDataContext = messageDataContext;
+            _signInManager = signInManager;
         }
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {
             var newMessage = new Message()
             {
-                User = "Chatuser",
+                User = _signInManager.Context.User?.Identity.Name,
                 Text = message,
                 Sent = DateTime.Now
             };
