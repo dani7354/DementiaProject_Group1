@@ -30,6 +30,7 @@ namespace WebApplication.Controllers
             _messageDataContext = messageDataContext;
             _signInManager = signInManager;
         }
+        [Authorize]
         [HttpPost, Route("reply")]
         public IActionResult GetReply(string message)
         {

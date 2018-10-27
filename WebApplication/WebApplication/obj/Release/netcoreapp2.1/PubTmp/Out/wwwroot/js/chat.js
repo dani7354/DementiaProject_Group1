@@ -112,8 +112,11 @@ function addReply(reply) {
 
     messageDiv.classList.add('Chat-message', 'Chat-message--bot')
     messageDiv.innerHTML += messageBubble;
-    messageContainer.insertBefore(messageDiv, dots)
-    messageContainer.classList.remove('Chat-messages--typing')
+
+    setTimeout(() => {
+        messageContainer.insertBefore(messageDiv, dots)
+        messageContainer.classList.remove('Chat-messages--typing')
+    }, 1500)
 
     if (messageContainer.scrollHeight > messageContainer.clientHeight) {
         chat.classList.add('Chat--overflown')
@@ -138,6 +141,10 @@ function cookingClass() {
 
     setTimeout(() => {
         messageContainer.insertBefore(woofImage, dots)
+
+        if (messageContainer.scrollHeight > messageContainer.clientHeight) {
+            chat.classList.add('Chat--overflown')
+        }
     }, 3000)
 
     setTimeout(() => {
@@ -150,11 +157,11 @@ function cookingClass() {
     }, 6000)
 }
 
-function getReply(userMessage) {
+function getReply() {
     $.ajax({
         type: 'POST',
         url: '/message/reply',
-        data: { message: userMessage },
+        data: { message: inputField.value },
         dataType: 'json',
         success: function (response) {
             addReply(response.reply)

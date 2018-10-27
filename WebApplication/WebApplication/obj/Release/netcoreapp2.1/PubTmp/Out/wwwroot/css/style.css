@@ -196,11 +196,11 @@ body {
 .light .Chat-beemo .Chat-beemoWaving {
   opacity: 1;
 }
-.light .Chat-beemo .Chat-beemoWavingDark {
+.light .Chat-beemo .Chat-beemoListening {
   transition: none;
   opacity: 0;
 }
-.dark .Chat-beemo .Chat-beemoWavingDark, .green .Chat-beemo .Chat-beemoWavingDark {
+.dark .Chat-beemo .Chat-beemoListening, .green .Chat-beemo .Chat-beemoListening {
   opacity: 1;
 }
 .Chat-messages {
