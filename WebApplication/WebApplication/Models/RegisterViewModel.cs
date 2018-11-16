@@ -29,19 +29,15 @@ namespace WebApplication.Models
 
         [Display(Name = "Lastname")]
         public string LastName { get; set; }
-
         [Display(Name = "Age")]
-        public int Age { get; set; }
+        public uint Age { get; set; }
 
         [Phone]
         [Display(Name = "Phone number")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Contact person")]  
+        [Display(Name = "Contact person")] 
         public string ContactPerson { get; set; }
-
-        [Display(Name = "Name of next kin")]
-        public string NameOfNextKin { get; set; }
     }
 }
